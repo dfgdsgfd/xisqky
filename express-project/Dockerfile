@@ -1,0 +1,42 @@
+# 使用官方Node.js运行时作为基础镜像
+FROM node:18-alpine
+
+# 安装 FFmpeg、FFprobe 和中文字体
+# fonts-noto-cjk-extra 包含 Noto Sans CJK 字体，支持中日韩文字
+RUN apk add --no-cache ffmpeg fontconfig font-noto-cjk && \
+    fc-cache -fv
+
+# 设置工作目录
+WORKDIR /app
+
+# 创建 ffmpeg 二进制文件的符号链接到 /app/bin
+RUN mkdir -p /app/bin && \
+    ln -s /usr/bin/ffmpeg /app/bin/ffmpeg && \
+    ln -s /usr/bin/ffprobe /app/bin/ffprobe
+
+# 复制package.json和package-lock.json
+COPY package*.json ./
+
+# 安装依赖
+RUN npm install --only=production
+
+# 复制应用源代码
+COPY . .
+
+# 创建非root用户
+RUN addgroup -g 1001 -S nodejs
+RUN adduser -S nodejs -u 1001
+
+# 更改文件所有权
+RUN chown -R nodejs:nodejs /app
+USER nodejs
+
+# 暴露端口
+EXPOSE 3001
+
+# 健康检查
+HEALTHCHECK --interval=30s --timeout=10s --start-period=40s --retries=3 \
+  CMD node -e "require('http').get('http://localhost:3001/api/health', (res) => { process.exit(res.statusCode === 200 ? 0 : 1) }).on('error', () => process.exit(1))"
+
+# 启动应用
+CMD ["npm", "start"]
