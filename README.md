@@ -1,5 +1,5 @@
 <p align="center">
-    <img alt="logo" src="./doc/imgs/汐.png" width="100" />
+    <img alt="logo" src="./doc/imgs/汐社.png" width="100" />
 </p>
 <h1 align="center" style="margin: 20px 30px 0px 30px; font-weight: bold;">XiaoShiLiu</h1>
 
