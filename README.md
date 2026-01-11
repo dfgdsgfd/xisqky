@@ -1,14 +1,14 @@
 <p align="center">
-    <img alt="logo" src="./doc/imgs/汐社.png" width="100" />
+    <img alt="logo" src="./doc/imgs/汐.png" width="100" />
 </p>
 <h1 align="center" style="margin: 20px 30px 0px 30px; font-weight: bold;">XiaoShiLiu</h1>
 
 ---
 <p align="center">
-    <b>基于 Express + Vue 前后端分离仿小红书项目</b>
+    <b>基于 Express + Vue 前后端分离图文项目</b>
 </p>
 <p align="center">
-    <i>一个高仿小红书的图文社区项目，支持图文发布、社交互动等核心功能，旨在提供从前端到后端的完整实践范本</i>
+    <i>汐社图文社区项目，支持图文发布、社交互动等核心功能，旨在提供从前端到后端的完整实践范本</i>
 <p align="center"><a href="https://moxi.meilanyv.cn/">演示网站</a> · <a href="">视频介绍待定</a>
 </p>
 <p align="center"><a href="https://github.com/dfgdsgfd/xisqky">简体中文</a>|<a href="doc/i18n/README_En.md">English</a>|<a href="doc/i18n/README_zh-Hant.md">繁體中文</a>
